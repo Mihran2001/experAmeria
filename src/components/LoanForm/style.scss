@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .loan-form {
+    width: 800px;
+
+    .title {
+      margin-top: 20px;
+      font-size: 20px;
+      padding: 0 0 15px;
+    }
+
+    .first-checkbox {
+      margin-top: 30px;
+      margin-bottom: 1rem;
+    }
+    .rows {
+      margin-bottom: 15px;
+    }
+
+    .form-actions {
+      margin-bottom: 50px;
+    }
+  }
+}
