@@ -5,12 +5,12 @@ interface IOwnData {
   label: string;
 }
 
-export default function OwnDataInputes({ label }: IOwnData) {
+export default function OwnDataInputes({ label, ...rest }: IOwnData) {
   return (
     <Row>
       <Col>
         <Form.Label>{label}</Form.Label>
-        <Form.Control type="text"></Form.Control>
+        <Form.Control type="text"  {...rest}/>
       </Col>
     </Row>
   );

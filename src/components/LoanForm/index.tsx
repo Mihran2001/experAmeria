@@ -8,10 +8,45 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+interface IFormInputs {
+  // loanType : any;
+  // loanData: any;
+  // amount: number;
+  name: string;
+  lastName: string;
+  surName: string;
+  lastSurName: string;
+  socialSecurityCard: string;
+  // documentType: any;
+  documentNumber: string;
+  // SphereOfActivity: any;
+}
+
+const schema = yup.object().shape({
+  // amount: yup.number().required(),
+  name: yup.string().required(),
+  lastName: yup.string().required(),
+  lastSurName: yup.string().required(),
+  socialSecurityCard: yup.string().required(),
+  documentNumber: yup.string().max(9).required(),
+})
+
 export default function Container() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInputs>({
+    resolver: yupResolver(schema),
+  });
+
+  const submitHandler = (data: IFormInputs) => {
+    console.log(data);
+  };
+
   return (
     <div className="container">
-      <Form className="loan-form">
+      <Form className="loan-form" onSubmit={handleSubmit(submitHandler)}>
         <h2 className="title">Նոր հայտ</h2>
         <DropDownInputes formLabel={"Վարկի տեսակ *"} option={"Ընտրել"} />
 
@@ -37,19 +72,19 @@ export default function Container() {
 
         <Row className="rows">
           <Col>
-            <OwnDataInputes label={"Անուն(հայերեն)"} />
+            <OwnDataInputes label={"Անուն(հայերեն)"} {...register("name")}/>
           </Col>
           <Col>
-            <OwnDataInputes label={"Ազգանուն (հայերեն)"} />
+            <OwnDataInputes label={"Ազգանուն (հայերեն)"} {...register("lastName")}/>
           </Col>
         </Row>
 
         <Row>
           <Col>
-            <OwnDataInputes label={"Հայրանուն (հայերեն)"} />
+            <OwnDataInputes label={"Հայրանուն (հայերեն)"} {...register("surName")}/>
           </Col>
           <Col>
-            <OwnDataInputes label={"Ազգանուն (հայերեն)"} />
+            <OwnDataInputes label={"Ազգանուն (հայերեն)"} {...register("lastSurName")}/>
           </Col>
         </Row>
 
@@ -59,6 +94,7 @@ export default function Container() {
           <Col>
             <OwnDataInputes
               label={"Հանրային ծառայությունների համարանիշ / սոցիալական քարտ"}
+              {...register("socialSecurityCard")}
             />
           </Col>
         </Row>
@@ -68,7 +104,7 @@ export default function Container() {
             <DropDownInputes formLabel={"Փաստաթղթի տեսակ"} option={"Ընտրել"} />
           </Col>
           <Col>
-            <OwnDataInputes label={"Փաստաթղթի համար"} />
+            <OwnDataInputes label={"Փաստաթղթի համար"} {...register("documentNumber")}/>
           </Col>
         </Row>
 
@@ -82,6 +118,7 @@ export default function Container() {
             />
           </Col>
         </Row>
+
         <Form.Check
           type={"checkbox"}
           label={<AgreedWithTermsLabel />}
