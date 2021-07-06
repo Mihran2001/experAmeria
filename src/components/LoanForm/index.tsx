@@ -7,6 +7,28 @@ import AgreedWithTermsLabel from "components/fields/AgreedWithTermsLabel";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { initReactI18next, useTranslation, Trans } from "react-i18next";
+import i18n from "i18next";
+
+const translationEn = {
+  newApplication: "New application",
+};
+
+const translationArm = {
+  newApplication: "Նոր հայտ",
+};
+
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    resources: {
+      en: { translation: translationEn },
+      fr: { translation: translationArm },
+    },
+    lng: "en",
+    fallbackLng: "en",
+    interpolation: { escapeValue: false },
+  });
 
 interface IFormInputs {
   // loanType : any;
@@ -29,9 +51,10 @@ const schema = yup.object().shape({
   lastSurName: yup.string().required(),
   socialSecurityCard: yup.string().required(),
   documentNumber: yup.string().max(9).required(),
-})
+});
 
 export default function Container() {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -47,7 +70,7 @@ export default function Container() {
   return (
     <div className="container">
       <Form className="loan-form" onSubmit={handleSubmit(submitHandler)}>
-        <h2 className="title">Նոր հայտ</h2>
+        <h2 className="title">{t("newApplication")}</h2>
         <DropDownInputes formLabel={"Վարկի տեսակ *"} option={"Ընտրել"} />
 
         <h2 className="title">Վարկի տվյալներ</h2>
@@ -72,19 +95,28 @@ export default function Container() {
 
         <Row className="rows">
           <Col>
-            <OwnDataInputes label={"Անուն(հայերեն)"} {...register("name")}/>
+            <OwnDataInputes label={"Անուն(հայերեն)"} {...register("name")} />
           </Col>
           <Col>
-            <OwnDataInputes label={"Ազգանուն (հայերեն)"} {...register("lastName")}/>
+            <OwnDataInputes
+              label={"Ազգանուն (հայերեն)"}
+              {...register("lastName")}
+            />
           </Col>
         </Row>
 
         <Row>
           <Col>
-            <OwnDataInputes label={"Հայրանուն (հայերեն)"} {...register("surName")}/>
+            <OwnDataInputes
+              label={"Հայրանուն (հայերեն)"}
+              {...register("surName")}
+            />
           </Col>
           <Col>
-            <OwnDataInputes label={"Ազգանուն (հայերեն)"} {...register("lastSurName")}/>
+            <OwnDataInputes
+              label={"Ազգանուն (հայերեն)"}
+              {...register("lastSurName")}
+            />
           </Col>
         </Row>
 
@@ -104,7 +136,10 @@ export default function Container() {
             <DropDownInputes formLabel={"Փաստաթղթի տեսակ"} option={"Ընտրել"} />
           </Col>
           <Col>
-            <OwnDataInputes label={"Փաստաթղթի համար"} {...register("documentNumber")}/>
+            <OwnDataInputes
+              label={"Փաստաթղթի համար"}
+              {...register("documentNumber")}
+            />
           </Col>
         </Row>
 
