@@ -1,15 +1,21 @@
 import React, { useCallback, useState, useContext } from "react";
 import "./style.scss";
+import { useTranslation } from "react-i18next";
 import { Navbar } from "react-bootstrap";
 import Logo from "../Logo/index";
 import { DropdownButton, Dropdown } from "react-bootstrap";
-import { languageContext } from "../providers/LanguageProvider";
+
+// interface Ilanguage {
+//   language: string;
+//   setLanguage: any;
+// }
 
 function Header() {
-  const { language, setLanguage } = useContext<any>(languageContext);
-  const handleSelect = (e: any) => {
-    console.log(e);
-  };
+  const [language, setLanguage] = useState<string>("ARM");
+  // const handleSelect = (e: any) => {
+  //   console.log(e);
+  // };
+  const { i18n } = useTranslation();
   return (
     <>
       <Navbar
@@ -26,20 +32,25 @@ function Header() {
           variant="outline-secondary"
           title={language}
           id="input-group-dropdown-1"
-          // onChange={(e: any) => setLanguage(() => e.target.value)}
-          onSelect={handleSelect}
+          // onSelect={handleSelect}
         >
           <Dropdown.Item
             href="#"
             eventKey="ARM"
-            onClick={() => setLanguage(() => "ARM")}
+            onClick={() => {
+              setLanguage("ARM");
+              i18n.changeLanguage("arm");
+            }}
           >
             ARM
           </Dropdown.Item>
           <Dropdown.Item
             href="#"
             eventKey="EN"
-            onClick={() => setLanguage("EN")}
+            onClick={() => {
+              setLanguage("EN");
+              i18n.changeLanguage("en");
+            }}
           >
             EN
           </Dropdown.Item>

@@ -5,7 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import "./styles/index.scss";
 // import LanguageProvider from "./components/providers/LanguageProvider";
 import { I18nextProvider } from "react-i18next";
-import i18n from "./i18n"; // initialized i18next instance
+import i18n from "./i18n";
 
 ReactDOM.render(
   <React.StrictMode>

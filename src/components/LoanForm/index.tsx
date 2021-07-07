@@ -7,28 +7,7 @@ import AgreedWithTermsLabel from "components/fields/AgreedWithTermsLabel";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { initReactI18next, useTranslation, Trans } from "react-i18next";
-import i18n from "i18next";
-
-const translationEn = {
-  newApplication: "New application",
-};
-
-const translationArm = {
-  newApplication: "Նոր հայտ",
-};
-
-i18n
-  .use(initReactI18next) // passes i18n down to react-i18next
-  .init({
-    resources: {
-      en: { translation: translationEn },
-      fr: { translation: translationArm },
-    },
-    lng: "en",
-    fallbackLng: "en",
-    interpolation: { escapeValue: false },
-  });
+import { useTranslation } from "react-i18next";
 
 interface IFormInputs {
   // loanType : any;
