@@ -1,3 +1,21 @@
 {
-  "newApplication": "Նոր դիմում"
+  "newApplication": "Նոր հայտ",
+  "loanType": "Վարկի տեսակ *",
+  "loanInformation": "Վարկի տվյալներ",
+  "price": "Արժույթ *",
+  "amount": "Գումար *",
+  "refinancing": "Վերաֆինանսավորում",
+  "personalInformation": "Անձնական տվյալներ",
+  "name": "Անուն(հայերեն)",
+  "lastName": "Ազգանուն (հայերեն)",
+  "surname": "Հայրանուն (հայերեն)",
+  "lastSurname": "Ազգանուն (հայերեն)",
+  "identityDocuments": "Անձը հաստատող փաստաթղթեր",
+  "socialCard": "Հանրային ծառայությունների համարանիշ / սոցիալական քարտ",
+  "documentType": "Փաստաթղթի տեսակ",
+  "documentNumber": "Փաստաթղթի համար",
+  "sphereOfActivity": "Գործունեության ոլորտ",
+  "choose": "ընտրել",
+  "remember": "Հիշել",
+  "continue": "Շարունակել"
 }

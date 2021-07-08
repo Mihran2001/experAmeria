@@ -1,3 +1,21 @@
 {
-  "newApplication": "New Application"
+  "newApplication": "New Application",
+  "loanType": "Loan type *",
+  "loanInformation": "Loan information",
+  "price": "Price",
+  "amount": "Amount *",
+  "refinancing": "Refinancing",
+  "personalInformation": "Personal information",
+  "name": "Name",
+  "lastName": "Last name",
+  "surname": "Surname",
+  "lastSurname": "Last name",
+  "identityDocuments": "Identity documents",
+  "socialCard": "Public service number / social card",
+  "documentType": "Document type",
+  "documentNumber": "Document number",
+  "sphereOfActivity": "Sphere of activity",
+  "choose": "Choose",
+  "remember": "Remember",
+  "continue": "Continue"
 }
